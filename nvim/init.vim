@@ -20,7 +20,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'ap/vim-buftabline'
 call plug#end()
 
-set list lcs=tab:\|\ 
+set list lcs=tab:\|\
 
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 
@@ -44,7 +44,7 @@ command! -bang ProjectFiles call fzf#vim#files('~/workspace', <bang>0)
 nnoremap <leader><SPACE> :Files<CR>
 nnoremap <leader>w :w<CR>
 nnoremap <leader>o :ProjectFiles<CR>
-nnoremap <leader>f :CocSearch -S 
+nnoremap <leader>f :CocSearch -S
 nnoremap <leader>l :Lines<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>r :Tags<CR>
@@ -76,14 +76,6 @@ nmap <leader>9 <Plug>BufTabLine.Go(9)
 nmap <leader>0 <Plug>BufTabLine.Go(10)
 
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 set foldmethod=indent
@@ -97,7 +89,6 @@ if has('nvim')
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
-
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -120,10 +111,9 @@ endfunction
 set tabstop=4 shiftwidth=4 expandtab
 
 " additional mode switching
-
-inoremap <special> kj <ESC> 
-inoremap <special> jk <ESC>:
-tnoremap <special> jk <C-\><C-n>
+" inoremap <special> kj <ESC>
+" inoremap <special> jk <ESC>:
+" tnoremap <special> jk <C-\><C-n>
 
 set tabline
 set cursorline
@@ -136,4 +126,4 @@ set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=#111111
 highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#000000
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
-
+highlight CursorLine guibg=NONE ctermbg=NONE
